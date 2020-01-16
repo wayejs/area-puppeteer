@@ -20,8 +20,9 @@ const pcodes = Object.keys(provinces['86']);
  * 新疆会将「自治区直辖县级行政区划」作为第二级行政区域
  * 出于实用性考虑，省市联动会过滤掉这些，直接用第二级行政区域补充
 */
-const filter = ['市辖区', '县', '省直辖县级行政区划', '自治区直辖县级行政区划'];
+// const filter = ['市辖区', '县', '省直辖县级行政区划', '自治区直辖县级行政区划'];
 
+const filter = []
 // 省市
 const pca = {
     '86': provinces['86']
@@ -121,7 +122,7 @@ async function getAreasByCCode (page, code, text) {
 
 // 省市区联动
 async function formatPCAAddress () {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless:false});
     const page = await browser.newPage();
 
     // 保留市辖区
